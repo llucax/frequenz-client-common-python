@@ -3056,6 +3056,16 @@ and <a class="autorefs autorefs-internal" title="frequenz.client.common.types.In
   " href="../../reference/frequenz/client/common/types/#frequenz.client.common.types.InvalidCountryCode"><code>InvalidCountryCode</code></a>
 use the same marker. See <a href="../validity-in-the-type/">validity in the type</a> to
 handle these values.</p>
+<p><a class="autorefs autorefs-internal" title="frequenz.client.common.InvalidDatetime
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/#frequenz.client.common.InvalidDatetime"><code>InvalidDatetime</code></a> prints both raw
+numbers of a malformed wire timestamp inside the marker, as
+<code>&lt;invalid:253402300800s+0ns&gt;</code>. The nanosecond part always carries its sign,
+because a fraction outside <code>[0, 999999999]</code> is one of the two reasons the
+timestamp is there at all.</p>
 <p>An unexpected raw number without <code>&lt;invalid:…&gt;</code> means something different: the
 data is well-formed, but this client version does not recognize it yet. For
 example, <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.UnrecognizedElectricalComponent

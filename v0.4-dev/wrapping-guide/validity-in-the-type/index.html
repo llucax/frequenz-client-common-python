@@ -3197,6 +3197,33 @@ For example,
       dataclass
   " href="../../reference/frequenz/client/common/grid/#frequenz.client.common.grid.InvalidDeliveryArea"><code>InvalidDeliveryArea</code></a> share
 a base while making their validity visible in annotations.</p>
+<p>Share a base only while both types hold the same field types. When the invalid
+type has to accept a wider type in a field, because that field can itself
+carry an <code>Invalid*</code> wrapper, write two independent classes instead.
+<a class="autorefs autorefs-internal" title="frequenz.client.common.metrics.BoundsSet
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/metrics/#frequenz.client.common.metrics.BoundsSet"><code>BoundsSet</code></a> and
+<a class="autorefs autorefs-internal" title="frequenz.client.common.metrics.InvalidBoundsSet
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/metrics/#frequenz.client.common.metrics.InvalidBoundsSet"><code>InvalidBoundsSet</code></a> do this,
+as do <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.Lifetime
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.Lifetime"><code>Lifetime</code></a> and
+<a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.InvalidLifetime
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.InvalidLifetime"><code>InvalidLifetime</code></a>.</p>
 <p>Normal constructors enforce the valid subclass's rules. A conversion function
 that sees invalid protobuf data creates the matching invalid subclass and
 returns <code>X | InvalidX</code>. The invalid subclass keeps the raw fields for
@@ -3280,6 +3307,16 @@ with <a class="autorefs autorefs-internal" title="frequenz.client.common.types.I
       dataclass
   " href="../../reference/frequenz/client/common/types/#frequenz.client.common.types.InvalidCountryCode"><code>InvalidCountryCode</code></a>. Each
 wrapper keeps the raw value while leaving the other fields usable.</p>
+<p>Reuse an existing field wrapper when several types have the same field. Every
+wrapper timestamp is <code>datetime | InvalidDatetime</code> because a protobuf
+<code>Timestamp</code> can break its own contract no matter which message it arrives in.
+One wrapper and one
+<a class="autorefs autorefs-internal" title="frequenz.client.common.InvalidDatetimeError" href="../../reference/frequenz/client/common/#frequenz.client.common.InvalidDatetimeError"><code>InvalidDatetimeError</code></a> mean a
+caller learns the pattern once. A field wrapper is protobuf-independent, so it
+belongs in a public type module, not next to the conversion function that
+produces it. When it wraps no <code>frequenz-api-common</code> message at all, like a
+timestamp, put it directly in the top-level package or a utility-specific
+module; do not mix it with a domain-specific module.</p>
 <h2 id="represent-protobuf-recovery-as-a-subtype">Represent protobuf recovery as a subtype<a class="headerlink" href="#represent-protobuf-recovery-as-a-subtype" title="Permanent link">¤</a></h2>
 <p>When the class identifies a protobuf category or type, use dedicated subclasses
 for recovery cases. An

@@ -3032,7 +3032,7 @@ inclusive, so the values at either end are members too.</p>
       dataclass
   " href="../../reference/frequenz/client/common/metrics/#frequenz.client.common.metrics.Bounds"><code>Bounds</code></a> with optional lower and
 upper endpoints. <code>-inf</code> for a lower endpoint and <code>+inf</code> for an upper endpoint
-become <code>None</code>; reversed endpoints and <code>NaN</code> raise <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ValueError"><code>ValueError</code></a>.</p>
+become <code>None</code>; reversed endpoints and <code>NaN</code> raise <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#ValueError"><code>ValueError</code></a>.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">frequenz.client.common.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bounds</span><span class="p">,</span> <span class="n">BoundsSet</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">bounds</span> <span class="o">=</span> <span class="n">Bounds</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>

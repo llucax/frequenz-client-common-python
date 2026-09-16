@@ -3934,7 +3934,7 @@
 <a href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.electrical_component_category_from_proto" class="headerlink" title="Permanent link">¤</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_category_from_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">message</span><span class="p">:</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory">ElectricalComponentCategory</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory">ElectricalComponentCategory</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3981,14 +3981,14 @@
           <tr class="doc-section-item">
             <td>
                 <span class="doc-returns-annotation">
-                    <code><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory">ElectricalComponentCategory</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+                    <code><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory">ElectricalComponentCategory</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></code>
                 </span>
             </td>
             <td class="doc-returns-details">
               <div class="doc-md-description">
                 <p>The corresponding
 <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory"><code>ElectricalComponentCategory</code></a> enum
-member, or the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> if the protobuf value is not recognized.</p>
+member, or the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a> if the protobuf value is not recognized.</p>
               </div>
             </td>
           </tr>
@@ -4182,7 +4182,7 @@ member to convert.</p>
   
       module-attribute
    (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ProtoTypeEnums)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums">ProtoTypeEnums</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.AbstractTypedTypes
 
 
@@ -4259,7 +4259,7 @@ pair does not carry the rest of the component state.</p>
 <li><code>(&lt;any other typeless category&gt;, None)</code> → its concrete typeless class
   (<code>Breaker</code>, <code>Meter</code>, ... one per category).</li>
 <li><code>(&lt;any known typeless category&gt;, &lt;non-None subtype&gt;)</code> → raises
-  <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ValueError"><code>ValueError</code></a>.</li>
+  <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#ValueError"><code>ValueError</code></a>.</li>
 <li><code>(&lt;unknown category int&gt;, &lt;any subtype&gt;)</code> → <code>UnrecognizedElectricalComponent</code>
   (subtype silently dropped).</li>
 </ul>
@@ -4348,7 +4348,7 @@ categories and abstract typed bases.</p>
           <tr class="doc-section-item">
             <td>
                 <span class="doc-returns-annotation">
-                    <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.AbstractTypedTypes
+                    <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.AbstractTypedTypes
 
 
   
@@ -4407,7 +4407,7 @@ categories and abstract typed bases.</p>
           <tr class="doc-section-item">
             <td>
               <span class="doc-raises-annotation">
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#ValueError">ValueError</a></code>
               </span>
             </td>
             <td class="doc-raises-details">
@@ -4641,7 +4641,7 @@ that combination has no representation in the protobuf wire format.</p>
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._battery.UnspecifiedBattery)" href="../../#frequenz.client.common.microgrid.electrical_components.UnspecifiedBattery">UnspecifiedBattery</a></span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.LiIonBattery
 
 
@@ -4660,7 +4660,7 @@ that combination has no representation in the protobuf wire format.</p>
    (frequenz.client.common.microgrid.electrical_components._battery.UnspecifiedBattery)" href="../../#frequenz.client.common.microgrid.electrical_components.UnspecifiedBattery">UnspecifiedBattery</a></span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="p">]</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="p">),</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.BatteryType.ValueType">ValueType</span></span><span class="p">]</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.BatteryType.ValueType">ValueType</span></span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.UnrecognizedBattery
 
@@ -4668,15 +4668,15 @@ that combination has no representation in the protobuf wire format.</p>
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._battery.UnrecognizedBattery)" href="../../#frequenz.client.common.microgrid.electrical_components.UnrecognizedBattery">UnrecognizedBattery</a></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.Battery
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.Battery
 
 
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._battery.Battery)" href="../../#frequenz.client.common.microgrid.electrical_components.Battery">Battery</a></span><span class="p">],</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.BatteryType.ValueType">ValueType</span></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.BatteryType.ValueType">ValueType</span></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="p">(</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.AcEvCharger
@@ -4703,7 +4703,7 @@ that combination has no representation in the protobuf wire format.</p>
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._ev_charger.UnspecifiedEvCharger)" href="../../#frequenz.client.common.microgrid.electrical_components.UnspecifiedEvCharger">UnspecifiedEvCharger</a></span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.AcEvCharger
 
 
@@ -4730,7 +4730,7 @@ that combination has no representation in the protobuf wire format.</p>
    (frequenz.client.common.microgrid.electrical_components._ev_charger.UnspecifiedEvCharger)" href="../../#frequenz.client.common.microgrid.electrical_components.UnspecifiedEvCharger">UnspecifiedEvCharger</a></span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="p">]</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="p">),</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.EvChargerType.ValueType">ValueType</span></span><span class="p">]</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.EvChargerType.ValueType">ValueType</span></span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.UnrecognizedEvCharger
 
@@ -4738,15 +4738,15 @@ that combination has no representation in the protobuf wire format.</p>
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._ev_charger.UnrecognizedEvCharger)" href="../../#frequenz.client.common.microgrid.electrical_components.UnrecognizedEvCharger">UnrecognizedEvCharger</a></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.EvCharger
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.EvCharger
 
 
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._ev_charger.EvCharger)" href="../../#frequenz.client.common.microgrid.electrical_components.EvCharger">EvCharger</a></span><span class="p">],</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.EvChargerType.ValueType">ValueType</span></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.EvChargerType.ValueType">ValueType</span></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="p">(</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.BatteryInverter
@@ -4773,7 +4773,7 @@ that combination has no representation in the protobuf wire format.</p>
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._inverter.UnspecifiedInverter)" href="../../#frequenz.client.common.microgrid.electrical_components.UnspecifiedInverter">UnspecifiedInverter</a></span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.BatteryInverter
 
 
@@ -4800,7 +4800,7 @@ that combination has no representation in the protobuf wire format.</p>
    (frequenz.client.common.microgrid.electrical_components._inverter.UnspecifiedInverter)" href="../../#frequenz.client.common.microgrid.electrical_components.UnspecifiedInverter">UnspecifiedInverter</a></span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="p">]</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="p">),</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.InverterType.ValueType">ValueType</span></span><span class="p">]</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.InverterType.ValueType">ValueType</span></span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.UnrecognizedInverter
 
@@ -4808,15 +4808,15 @@ that combination has no representation in the protobuf wire format.</p>
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._inverter.UnrecognizedInverter)" href="../../#frequenz.client.common.microgrid.electrical_components.UnrecognizedInverter">UnrecognizedInverter</a></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.Inverter
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.Inverter
 
 
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._inverter.Inverter)" href="../../#frequenz.client.common.microgrid.electrical_components.Inverter">Inverter</a></span><span class="p">],</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.InverterType.ValueType">ValueType</span></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.InverterType.ValueType">ValueType</span></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="p">(</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConcreteTypelessTypes
@@ -4824,14 +4824,14 @@ that combination has no representation in the protobuf wire format.</p>
 
   
       module-attribute
-   (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ConcreteTypelessTypes)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConcreteTypelessTypes">ConcreteTypelessTypes</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConcreteTypelessTypes
+   (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ConcreteTypelessTypes)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConcreteTypelessTypes">ConcreteTypelessTypes</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConcreteTypelessTypes
 
 
   
       module-attribute
    (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ConcreteTypelessTypes)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConcreteTypelessTypes">ConcreteTypelessTypes</a></span><span class="p">]</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="p">),</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.UnrecognizedElectricalComponent
 
@@ -4839,7 +4839,7 @@ that combination has no representation in the protobuf wire format.</p>
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._problematic.UnrecognizedElectricalComponent)" href="../../#frequenz.client.common.microgrid.electrical_components.UnrecognizedElectricalComponent">UnrecognizedElectricalComponent</a></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div><div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.MismatchedCategoryElectricalComponent
 
@@ -4847,7 +4847,7 @@ that combination has no representation in the protobuf wire format.</p>
   
       dataclass
    (frequenz.client.common.microgrid.electrical_components._problematic.MismatchedCategoryElectricalComponent)" href="../../#frequenz.client.common.microgrid.electrical_components.MismatchedCategoryElectricalComponent">MismatchedCategoryElectricalComponent</a></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>          </div>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_class_to_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">component</span><span class="p">:</span> <span class="p">(</span>
@@ -4857,19 +4857,19 @@ that combination has no representation in the protobuf wire format.</p>
   
       module-attribute
    (frequenz.client.common.microgrid.electrical_components._types.ElectricalComponentTypes)" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentTypes">ElectricalComponentTypes</a></span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConvertibleElectricalComponentTypes
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConvertibleElectricalComponentTypes
 
 
   
       module-attribute
    (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ConvertibleElectricalComponentTypes)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConvertibleElectricalComponentTypes">ConvertibleElectricalComponentTypes</a></span><span class="p">]</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="p">),</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums
 
 
   
       module-attribute
-   (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ProtoTypeEnums)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums">ProtoTypeEnums</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+   (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ProtoTypeEnums)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums">ProtoTypeEnums</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4961,7 +4961,7 @@ base usually just discard the subtype.</p>
 
   
       module-attribute
-   (frequenz.client.common.microgrid.electrical_components._types.ElectricalComponentTypes)" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentTypes">ElectricalComponentTypes</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConvertibleElectricalComponentTypes
+   (frequenz.client.common.microgrid.electrical_components._types.ElectricalComponentTypes)" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentTypes">ElectricalComponentTypes</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ConvertibleElectricalComponentTypes
 
 
   
@@ -4986,12 +4986,12 @@ base usually just discard the subtype.</p>
           <tr class="doc-section-item">
             <td>
                 <span class="doc-returns-annotation">
-                    <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a>[<span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a>, <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums
+                    <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#tuple">tuple</a>[<span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentCategory.ValueType">ValueType</span> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a>, <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums
 
 
   
       module-attribute
-   (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ProtoTypeEnums)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums">ProtoTypeEnums</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a> | None]</code>
+   (frequenz.client.common.microgrid.electrical_components.proto.v1alpha8._electrical_component.ProtoTypeEnums)" href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.ProtoTypeEnums">ProtoTypeEnums</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a> | None]</code>
                 </span>
             </td>
             <td class="doc-returns-details">
@@ -5016,7 +5016,7 @@ base usually just discard the subtype.</p>
           <tr class="doc-section-item">
             <td>
               <span class="doc-raises-annotation">
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#TypeError">TypeError</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#TypeError">TypeError</a></code>
               </span>
             </td>
             <td class="doc-raises-details">
@@ -5445,7 +5445,7 @@ that malformed state at the type level.</p>
 <a href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.electrical_component_diagnostic_code_from_proto" class="headerlink" title="Permanent link">¤</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_diagnostic_code_from_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">message</span><span class="p">:</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentDiagnosticCode.ValueType">ValueType</span></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode">ElectricalComponentDiagnosticCode</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode">ElectricalComponentDiagnosticCode</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -5492,14 +5492,14 @@ that malformed state at the type level.</p>
           <tr class="doc-section-item">
             <td>
                 <span class="doc-returns-annotation">
-                    <code><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode">ElectricalComponentDiagnosticCode</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+                    <code><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode">ElectricalComponentDiagnosticCode</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></code>
                 </span>
             </td>
             <td class="doc-returns-details">
               <div class="doc-md-description">
                 <p>The corresponding
 <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentDiagnosticCode"><code>ElectricalComponentDiagnosticCode</code></a>
-enum member, or the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> if the protobuf value is not recognized.</p>
+enum member, or the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a> if the protobuf value is not recognized.</p>
               </div>
             </td>
           </tr>
@@ -6193,7 +6193,7 @@ or unrecognized battery, EV charger or inverter type the matching
 <a href="#frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.electrical_component_state_code_from_proto" class="headerlink" title="Permanent link">¤</a></h4>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">electrical_component_state_code_from_proto</span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">message</span><span class="p">:</span> <span class="n"><span title="frequenz.api.common.v1alpha8.microgrid.electrical_components.electrical_components_pb2.ElectricalComponentStateCode.ValueType">ValueType</span></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode">ElectricalComponentStateCode</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode">ElectricalComponentStateCode</a></span> <span class="o">|</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6240,14 +6240,14 @@ or unrecognized battery, EV charger or inverter type the matching
           <tr class="doc-section-item">
             <td>
                 <span class="doc-returns-annotation">
-                    <code><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode">ElectricalComponentStateCode</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+                    <code><a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode">ElectricalComponentStateCode</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></code>
                 </span>
             </td>
             <td class="doc-returns-details">
               <div class="doc-md-description">
                 <p>The corresponding
 <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode" href="../../#frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode"><code>ElectricalComponentStateCode</code></a> enum
-member, or the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> if the protobuf value is not recognized.</p>
+member, or the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a> if the protobuf value is not recognized.</p>
               </div>
             </td>
           </tr>

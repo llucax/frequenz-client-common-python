@@ -3201,7 +3201,7 @@ member temporarily and warns when code uses it. Document the representation new
 code should use.</p>
 <h2 id="tighten-invariants-in-stages">Tighten invariants in stages<a class="headerlink" href="#tighten-invariants-in-stages" title="Permanent link">¤</a></h2>
 <p>When you tighten a rule, do not always reject old input immediately. First,
-accept it and emit a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#DeprecationWarning"><code>DeprecationWarning</code></a> with
+accept it and emit a <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#DeprecationWarning"><code>DeprecationWarning</code></a> with
 <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/warnings.html#warnings.warn"><code>warnings.warn()</code></a>. Where feasible, provide a documented opt-in
 flag for the stricter behavior. In a later minor release, make invalid normal
 construction raise every time. A conversion function must still keep invalid
@@ -3214,7 +3214,7 @@ can test the stricter behavior before it becomes required and migrate on purpose
 <a class="autorefs autorefs-external" href="https://docs.pytest.org/en/stable/reference/reference.html#pytest.deprecated_call"><code>pytest.deprecated_call()</code></a>. Check the exact message
 and the replacement behavior. If deprecated code correctly calls another
 deprecated symbol, suppress only that expected inner
-<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#DeprecationWarning"><code>DeprecationWarning</code></a>
+<a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#DeprecationWarning"><code>DeprecationWarning</code></a>
 in a small <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/warnings.html#warnings.catch_warnings"><code>warnings.catch_warnings()</code></a> block. The
 outer API must still emit its one public warning.</p>
 <p>Add <code>RELEASE_NOTES.md</code> migration bullets that state the old behavior, the

@@ -3129,6 +3129,74 @@ whose <a class="autorefs autorefs-internal" title="value
   
       instance-attribute
   " href="../../reference/frequenz/client/common/types/#frequenz.client.common.types.InvalidLatitudeError.value"><code>InvalidLatitudeError.value</code></a> is the raw value.</p>
+<p>Timestamps work the same way. A protobuf <code>Timestamp</code> counts seconds and
+nanoseconds as plain integers, so a message can carry values the <code>Timestamp</code>
+contract does not allow: an instant outside the years 1 to 9999, or a
+nanosecond fraction outside <code>[0, 999999999]</code>. Every wrapper timestamp field is
+therefore <code>datetime |</code><a class="autorefs autorefs-internal" title="frequenz.client.common.InvalidDatetime
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/#frequenz.client.common.InvalidDatetime"><code>InvalidDatetime</code></a>,
+with <a class="autorefs autorefs-internal" title="seconds
+
+
+  
+      instance-attribute
+  " href="../../reference/frequenz/client/common/#frequenz.client.common.InvalidDatetime.seconds"><code>InvalidDatetime.seconds</code></a>
+and <a class="autorefs autorefs-internal" title="nanos
+
+
+  
+      instance-attribute
+  " href="../../reference/frequenz/client/common/#frequenz.client.common.InvalidDatetime.nanos"><code>InvalidDatetime.nanos</code></a>
+holding exactly what the server sent:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">frequenz.client.common.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">BoundsSet</span><span class="p">,</span> <span class="n">Metric</span><span class="p">,</span> <span class="n">MetricSample</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">frequenz.client.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">InvalidDatetime</span><span class="p">,</span> <span class="n">InvalidDatetimeError</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">sample</span> <span class="o">=</span> <span class="n">MetricSample</span><span class="p">(</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">sample_time2</span><span class="o">=</span><span class="n">InvalidDatetime</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">253402300800</span><span class="p">,</span> <span class="n">nanos</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">metric</span><span class="o">=</span><span class="n">Metric</span><span class="o">.</span><span class="n">AC_POWER_ACTIVE</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">value</span><span class="o">=</span><span class="mf">42.0</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">bounds_set</span><span class="o">=</span><span class="n">BoundsSet</span><span class="p">(),</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">match</span> <span class="n">sample</span><span class="o">.</span><span class="n">sample_time2</span><span class="p">:</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">case</span> <span class="n">InvalidDatetime</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">raw_seconds</span><span class="p">):</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">raw_seconds</span><span class="p">)</span>  <span class="c1"># 253402300800</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="k">case</span> <span class="n">datetime</span><span class="p">()</span> <span class="k">as</span> <span class="n">sample_time</span><span class="p">:</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">sample_time</span><span class="o">.</span><span class="n">isoformat</span><span class="p">())</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="n">sample</span><span class="o">.</span><span class="n">get_sample_time</span><span class="p">()</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="k">except</span> <span class="n">InvalidDatetimeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">attr_name</span><span class="p">)</span>  <span class="c1"># sample_time2</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="o">.</span><span class="n">datetime</span><span class="p">)</span>  <span class="c1"># &lt;invalid:253402300800s+0ns&gt;</span>
+</span></code></pre></div>
+<p>A <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.Lifetime
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.Lifetime"><code>Lifetime</code></a> is the exception: its
+two ends are plain <code>datetime | None</code>, because a period whose ends cannot be
+ordered is not a usable period. Only
+<a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.InvalidLifetime
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.InvalidLifetime"><code>InvalidLifetime</code></a> can hold
+an <a class="autorefs autorefs-internal" title="frequenz.client.common.InvalidDatetime
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/#frequenz.client.common.InvalidDatetime"><code>InvalidDatetime</code></a>, and a malformed
+wire timestamp gives you one of those instead.</p>
 <p>Some wrapper types use a dedicated subclass for a value that is invalid,
 unspecified, or unrecognized. For a battery, that can be
 <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.electrical_components.UnspecifiedBattery
@@ -3181,29 +3249,29 @@ whose <a class="autorefs autorefs-internal" title="category
   
       instance-attribute
   " href="../../reference/frequenz/client/common/microgrid/electrical_components/#frequenz.client.common.microgrid.electrical_components.MismatchedCategoryElectricalComponent.category"><code>MismatchedCategoryElectricalComponent.category</code></a> records the mismatched value.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">assert_never</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">frequenz.client.common.microgrid.electrical_components</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">BatteryTypes</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">LiIonBattery</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">NaIonBattery</span><span class="p">,</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">UnrecognizedBattery</span><span class="p">,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">UnspecifiedBattery</span><span class="p">,</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">)</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">describe_battery</span><span class="p">(</span><span class="n">battery</span><span class="p">:</span> <span class="n">BatteryTypes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="k">match</span> <span class="n">battery</span><span class="p">:</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="k">case</span> <span class="n">LiIonBattery</span><span class="p">():</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>            <span class="k">return</span> <span class="s2">"Li-ion"</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="k">case</span> <span class="n">NaIonBattery</span><span class="p">():</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>            <span class="k">return</span> <span class="s2">"Na-ion"</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="k">case</span> <span class="n">UnspecifiedBattery</span><span class="p">():</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            <span class="k">return</span> <span class="s2">"unspecified"</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="k">case</span> <span class="n">UnrecognizedBattery</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">raw_type</span><span class="p">):</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>            <span class="k">return</span> <span class="sa">f</span><span class="s2">"unrecognized: </span><span class="si">{</span><span class="n">raw_type</span><span class="si">}</span><span class="s2">"</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="k">case</span> <span class="n">unexpected</span><span class="p">:</span>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>            <span class="n">assert_never</span><span class="p">(</span><span class="n">unexpected</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">assert_never</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">frequenz.client.common.microgrid.electrical_components</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">BatteryTypes</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">LiIonBattery</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">NaIonBattery</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="n">UnrecognizedBattery</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">UnspecifiedBattery</span><span class="p">,</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">)</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">describe_battery</span><span class="p">(</span><span class="n">battery</span><span class="p">:</span> <span class="n">BatteryTypes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="k">match</span> <span class="n">battery</span><span class="p">:</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="k">case</span> <span class="n">LiIonBattery</span><span class="p">():</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>            <span class="k">return</span> <span class="s2">"Li-ion"</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="k">case</span> <span class="n">NaIonBattery</span><span class="p">():</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>            <span class="k">return</span> <span class="s2">"Na-ion"</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="k">case</span> <span class="n">UnspecifiedBattery</span><span class="p">():</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>            <span class="k">return</span> <span class="s2">"unspecified"</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>        <span class="k">case</span> <span class="n">UnrecognizedBattery</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">raw_type</span><span class="p">):</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>            <span class="k">return</span> <span class="sa">f</span><span class="s2">"unrecognized: </span><span class="si">{</span><span class="n">raw_type</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>        <span class="k">case</span> <span class="n">unexpected</span><span class="p">:</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>            <span class="n">assert_never</span><span class="p">(</span><span class="n">unexpected</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Use <code>match</code> with <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.assert_never"><code>assert_never</code></a> rather than <code>isinstance()</code> chains so a type
 checker can keep the cases exhaustive. Invalid data is different from an

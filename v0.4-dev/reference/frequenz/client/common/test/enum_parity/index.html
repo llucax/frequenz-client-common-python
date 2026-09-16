@@ -3656,7 +3656,7 @@
   the Python enum member name.</li>
 <li>The protobuf enum value number matches the Python enum value.</li>
 <li>There is a versioned <code>&lt;enum&gt;_from_proto</code> function returning the Python
-  enum member for known values and the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> for unknown values.</li>
+  enum member for known values and the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a> for unknown values.</li>
 <li>There is a versioned <code>&lt;enum&gt;_to_proto</code> function returning the numeric
   protobuf value.</li>
 </ul>
@@ -3740,7 +3740,7 @@ name must start with <code>Test</code> so <a class="autorefs autorefs-external" 
   
       class-attribute
   " href="#frequenz.client.common.test.enum_parity.EnumParityTest.from_proto"><code>from_proto</code></a> returns the matching member for known values
-  and the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> for unknown values;</li>
+  and the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a> for unknown values;</li>
 <li><a class="autorefs autorefs-internal" title="to_proto
 
 
@@ -4380,7 +4380,7 @@ them unset keep the exact behaviour described above.</p>
   </span>
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.absent_members" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">absent_members</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset">frozenset</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset">frozenset</a></span><span class="p">()</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">absent_members</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset">frozenset</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset">frozenset</a></span><span class="p">()</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4411,7 +4411,7 @@ defined in the protobuf enum.</p>
   </span>
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.deprecated_members" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">deprecated_members</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset">frozenset</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#frozenset">frozenset</a></span><span class="p">()</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">deprecated_members</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset">frozenset</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#frozenset">frozenset</a></span><span class="p">()</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4422,7 +4422,7 @@ defined in the protobuf enum.</p>
   
       class-attribute
   " href="#frequenz.client.common.test.enum_parity.EnumParityTest.name_prefix"><code>name_prefix</code></a>) expected to be deprecated.</p>
-<p>Accessing them must emit a <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#DeprecationWarning"><code>DeprecationWarning</code></a>.</p>
+<p>Accessing them must emit a <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#DeprecationWarning"><code>DeprecationWarning</code></a>.</p>
 
     </div>
 
@@ -4447,7 +4447,7 @@ defined in the protobuf enum.</p>
     <div class="doc doc-contents ">
 
         <p>Versioned converter from a protobuf enum value to the Python enum.</p>
-<p>Returns the Python enum member for known values, or the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int"><code>int</code></a> for
+<p>Returns the Python enum member for known values, or the raw <a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int"><code>int</code></a> for
 unknown values. Bind with <code>staticmethod(...)</code> in the subclass.</p>
 
     </div>
@@ -4467,7 +4467,7 @@ unknown values. Bind with <code>staticmethod(...)</code> in the subclass.</p>
   </span>
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.name_prefix" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">name_prefix</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">name_prefix</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4517,7 +4517,7 @@ unknown values. Bind with <code>staticmethod(...)</code> in the subclass.</p>
   </span>
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.python_enum" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">python_enum</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="enum.Enum" href="https://docs.python.org/3/library/enum.html#enum.Enum">Enum</a></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">python_enum</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" title="enum.Enum" href="https://docs.python.org/3/library/enum.html#enum.Enum">Enum</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4541,7 +4541,7 @@ unknown values. Bind with <code>staticmethod(...)</code> in the subclass.</p>
   </span>
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.silence_deprecations" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">silence_deprecations</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="o">=</span> <span class="kc">False</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">silence_deprecations</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></span> <span class="o">=</span> <span class="kc">False</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4577,7 +4577,7 @@ calling them (member-level deprecation checks are unaffected).</p>
   </span>
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.to_proto" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">to_proto</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">to_proto</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#int">int</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4893,7 +4893,7 @@ longer resolves to a Python member.</p>
 
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.test_from_proto" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_from_proto</span><span class="p">(</span><span class="n">pb_name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_from_proto</span><span class="p">(</span><span class="n">pb_name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4920,7 +4920,7 @@ longer resolves to a Python member.</p>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></code>
                   </span>
               </p>
             </td>
@@ -5029,7 +5029,7 @@ longer resolves to a Python member.</p>
 
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.test_proto_enum_matches_enum_name" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_proto_enum_matches_enum_name</span><span class="p">(</span><span class="n">pb_name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_proto_enum_matches_enum_name</span><span class="p">(</span><span class="n">pb_name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -5056,7 +5056,7 @@ longer resolves to a Python member.</p>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></code>
                   </span>
               </p>
             </td>
@@ -5112,7 +5112,7 @@ longer resolves to a Python member.</p>
 
 
 <a href="#frequenz.client.common.test.enum_parity.EnumParityTest.test_proto_enum_matches_enum_value" class="headerlink" title="Permanent link">¤</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_proto_enum_matches_enum_value</span><span class="p">(</span><span class="n">pb_name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">test_proto_enum_matches_enum_value</span><span class="p">(</span><span class="n">pb_name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -5139,7 +5139,7 @@ longer resolves to a Python member.</p>
               <p>
                   <span class="doc-param-annotation">
                     <b>TYPE:</b>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></code>
                   </span>
               </p>
             </td>

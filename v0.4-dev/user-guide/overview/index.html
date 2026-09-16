@@ -816,6 +816,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#grid" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3130,6 +3141,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Utilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#grid" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3241,6 +3263,16 @@
 <p>The library groups its wrappers by the kind of common API data you receive.
 Use this map to find the relevant domain, then follow its links for the public
 API details.</p>
+<h2 id="utilities">Utilities<a class="headerlink" href="#utilities" title="Permanent link">¤</a></h2>
+<p><a class="autorefs autorefs-internal" title="frequenz.client.common.InvalidDatetime
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/#frequenz.client.common.InvalidDatetime"><code>InvalidDatetime</code></a> is not part of
+<code>frequenz-api-common</code> so it lives in the top-level package. It preserves a wire
+timestamp that is not well-formed and can appear in any wrapper where a
+<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/datetime.html#datetime.datetime"><code>datetime</code></a> is expected.</p>
 <h2 id="grid">Grid<a class="headerlink" href="#grid" title="Permanent link">¤</a></h2>
 <p>Start with <a class="autorefs autorefs-internal" title="frequenz.client.common.grid.DeliveryArea
 
@@ -3334,19 +3366,13 @@ cover the base and invalid range variants.</p>
   
       dataclass
   " href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.Lifetime"><code>Lifetime</code></a>.
-<a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.BaseLifetime
-
-
-  
-      dataclass
-  " href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.BaseLifetime"><code>BaseLifetime</code></a> and
 <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.InvalidLifetime
 
 
   
       dataclass
-  " href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.InvalidLifetime"><code>InvalidLifetime</code></a> represent
-the lifetime variants, while
+  " href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.InvalidLifetime"><code>InvalidLifetime</code></a> carries
+malformed wire data, while
 <a class="autorefs autorefs-internal" title="frequenz.client.common.microgrid.InvalidLifetimeError" href="../../reference/frequenz/client/common/microgrid/#frequenz.client.common.microgrid.InvalidLifetimeError"><code>InvalidLifetimeError</code></a>
 is raised by safe accessors.</p>
 <h2 id="electrical-components">Electrical components<a class="headerlink" href="#electrical-components" title="Permanent link">¤</a></h2>
@@ -3470,7 +3496,14 @@ invalid fields.</p>
   
       dataclass
   " href="../../reference/frequenz/client/common/pagination/#frequenz.client.common.pagination.PaginationInfo"><code>PaginationInfo</code></a> carries
-pagination details.</p>
+pagination details;
+<a class="autorefs autorefs-internal" title="frequenz.client.common.pagination.InvalidPaginationInfo
+
+
+  
+      dataclass
+  " href="../../reference/frequenz/client/common/pagination/#frequenz.client.common.pagination.InvalidPaginationInfo"><code>InvalidPaginationInfo</code></a>
+preserves a malformed item count.</p>
 <p>For every field, method, and remaining wrapper type, see the <a href="../../reference/frequenz/client/common/">API
 Reference</a>. The
 <a href="../../client-developer-guide/">Client Developer Guide</a> explains how
