@@ -9,9 +9,20 @@ define the wider 0.x versioning process.
 
 Mark the old public symbol with
 [`typing_extensions.deprecated`][typing_extensions.deprecated]. Use this exact
-message form: `"<old FQCN> is deprecated. Use <new FQCN> instead."`. Write both
-fully qualified names exactly. In the old API documentation, explain any change
-to the return type or behavior. A caller should know what to use from the
+message form: `"<old FQCN> is deprecated since v<X.Y.Z>. Use [<new FQCN>][]
+instead."`. Write both fully qualified names exactly, the old one plain and the
+replacement as a bare cross-reference so the rendered `Deprecated:` admonition
+links to it. The version belongs in the sentence: a separate "since" line
+cannot be expressed through the decorator, so the two would drift apart.
+
+The same string is printed as a runtime warning, so keep it to a sentence or
+two and build it by concatenating single-line strings. A triple-quoted message
+keeps its indentation, which stops the cross-reference from resolving and
+prints an indented warning in the terminal. Do not put the names in backticks
+either: they buy code font in the documentation at the cost of noise in the
+console, where the reader cannot skip over them. Anything beyond "use X
+instead", such as a change to the return type or behavior, goes in the
+docstring body as prose. A caller should still know what to use from the
 warning alone.
 
 This example gives the replacement conversion function a numeric-suffixed name
@@ -27,18 +38,38 @@ def thing_from_proto2(value: int) -> str:
 
 
 @deprecated(
-    "example.thing_from_proto is deprecated. Use example.thing_from_proto2 instead."
+    "example.thing_from_proto is deprecated since v0.4.1. "
+    "Use [example.thing_from_proto2][] instead."
 )
 def thing_from_proto(value: int) -> str:
     return thing_from_proto2(value)
 
 
 with deprecated_call(
-    match="example.thing_from_proto is deprecated. "
-    "Use example.thing_from_proto2 instead."
+    match=r"^example\.thing_from_proto is deprecated since v0\.4\.1\. "
+    r"Use \[example\.thing_from_proto2\]\[\] instead\.$"
 ):
     assert thing_from_proto(3) == "3"
 ```
+
+`match` is a regular expression, so the brackets of the cross-reference have to
+be escaped there, as do the dots of the qualified names.
+
+The documentation build turns the decorator's message into a `Deprecated:`
+admonition at the top of the symbol's docstring, and adds a `deprecated` label
+next to its name. It reads the message from the source without running it, so
+write it as string literals in the decorator call: a message held in a
+constant, built by an f-string or returned by a helper function renders no
+admonition at all.
+
+Where no admonition can be generated, write the notice as a `Deprecated:`
+admonition in the docstring instead. That is the case for a single argument,
+construction that is being made stricter, a property (the decorator works at
+runtime, but the documentation build ignores it there), and a message that is
+not a literal. Put it immediately after the summary line and give it no custom
+title (a title replaces the word "Deprecated" in the rendered output), and
+again state the version in the text. Never hand-write one for a symbol that
+already gets a generated one, or the page shows the same notice twice.
 
 ## Check downstream adoption before removal
 
@@ -65,8 +96,32 @@ unsuffixed name while retaining a deprecated alias for the suffixed name.
 
 For an enum-member change, use
 [`deprecated_member`][frequenz.core.enum.deprecated_member]. It keeps the old
-member temporarily and warns when code uses it. Document the representation new
-code should use.
+member temporarily and warns when code uses it. Its message follows the same
+form as the decorator's and gets the same generated admonition and label, as
+long as it is written as string literals in the call. Document the
+representation new code should use.
+
+A renamed member keeps its old name as a deprecated alias of the same value,
+which [`unique`][frequenz.core.enum.unique] allows:
+
+```python
+from frequenz.core.enum import Enum, deprecated_member, unique
+
+
+@unique
+class Mode(Enum):
+    """Modes a thing can run in."""
+
+    NEW_NAME = 1
+    """The thing runs normally."""
+
+    OLD_NAME = deprecated_member(
+        1,
+        "example.Mode.OLD_NAME is deprecated since v0.5.0. "
+        "Use example.Mode.NEW_NAME instead.",
+    )
+    """Old name of `NEW_NAME`."""
+```
 
 ## Tighten invariants in stages
 
