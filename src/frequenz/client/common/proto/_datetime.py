@@ -60,22 +60,20 @@ def datetime_to_proto(dt: datetime | None) -> timestamp_pb2.Timestamp | None:
 
 
 @deprecated(
-    "`datetime_from_proto` is deprecated; use "
-    "`datetime_from_proto2` (returns `datetime | InvalidDatetime`) instead."
+    "frequenz.client.common.proto.datetime_from_proto is deprecated since "
+    "v0.4.1. Use [frequenz.client.common.proto.datetime_from_proto2][] instead."
 )
 def datetime_from_proto(  # noqa: DOC502
     ts: timestamp_pb2.Timestamp, tz: timezone = timezone.utc
 ) -> datetime:
     """Convert a protobuf Timestamp to a datetime.
 
-    Warning: Deprecated
-        Use [`datetime_from_proto2`][..datetime_from_proto2] instead. The new
-        conversion function keeps a malformed timestamp in its return type
-        (`datetime | InvalidDatetime`) rather than raising or silently
-        repairing it, and is exact across the whole protobuf range, where this
-        function loses sub-second precision far from the epoch. It always
-        returns UTC; call [`astimezone()`][datetime.datetime.astimezone] on the
-        result instead of passing `tz`.
+    [`datetime_from_proto2`][..datetime_from_proto2] keeps a malformed
+    timestamp in its return type (`datetime | InvalidDatetime`) rather than
+    raising or silently repairing it, and is exact across the whole protobuf
+    range, where this function loses sub-second precision far from the epoch.
+    It always returns UTC; call [`astimezone()`][datetime.datetime.astimezone]
+    on the result instead of passing `tz`.
 
     Args:
         ts: The Timestamp object to convert.

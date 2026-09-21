@@ -12,8 +12,9 @@ class Event(Enum):
 
     UNSPECIFIED = deprecated_member(
         0,
-        "Event.UNSPECIFIED is deprecated; use the `int` value `0` "
-        "instead if you really need to check for this low-level value.",
+        "frequenz.client.common.streaming.Event.UNSPECIFIED is deprecated "
+        "since v0.4.1. Use the int value 0 instead if you really need to check "
+        "for this low-level value.",
     )
     """Unspecified event type."""
 

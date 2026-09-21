@@ -39,9 +39,9 @@ def test_from_proto_emits_deprecation_warning() -> None:
     proto = pagination_info_pb2.PaginationInfo(total_items=1)
     with pytest.deprecated_call(
         match=r"^frequenz\.client\.common\.pagination\.proto\.v1alpha8\."
-        r"pagination_info_from_proto is deprecated\. Use "
-        r"frequenz\.client\.common\.pagination\.proto\.v1alpha8\."
-        r"pagination_info_from_proto2 instead\.$"
+        r"pagination_info_from_proto is deprecated since v0\.4\.1\. Use "
+        r"\[frequenz\.client\.common\.pagination\.proto\.v1alpha8\."
+        r"pagination_info_from_proto2\]\[\] instead\.$"
     ):
         pagination_info_from_proto(proto)
 

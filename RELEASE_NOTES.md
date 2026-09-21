@@ -122,9 +122,9 @@ There are a few intentional hard breaks too, all listed in the Upgrading section
 
 * `frequenz.client.common.proto.datetime_from_proto` is now deprecated; use `datetime_from_proto2` instead.
 
-* `frequenz.client.common.metrics.MetricSample.sample_time` is now a deprecated read-only property; use the new `sample_time2` field instead.
+* `frequenz.client.common.metrics.MetricSample.sample_time` is now a deprecated read-only property; use the new `get_sample_time()` method instead, or the new `sample_time2` field to also see malformed timestamps.
 
-    The field became `datetime | InvalidDatetime`, which the released `datetime` annotation cannot express, so it was renamed. Reading `sample_time` still returns a `datetime` and now emits a `DeprecationWarning`; for a malformed wire timestamp it raises `InvalidDatetimeError` (a `ValueError`) rather than returning a repaired value. `get_sample_time()` does the same without the warning.
+    The field became `datetime | InvalidDatetime`, which the released `datetime` annotation cannot express, so it was renamed. Reading `sample_time` still returns a `datetime` and now emits a `DeprecationWarning`; for a malformed wire timestamp it raises `InvalidDatetimeError` (a `ValueError`) rather than returning a repaired value. `get_sample_time()` does the same without the warning, which is why the warning recommends it.
 
     Constructing with `sample_time=` is **not** deprecated and keeps working: it accepts a well-formed `datetime` today and will accept the wider type once `sample_time2` is renamed back to `sample_time`. Use `sample_time2=` to build a sample from a malformed wire timestamp.
 

@@ -83,8 +83,9 @@ def test_no_none_datetime(dt: datetime) -> None:
 def test_from_proto_is_deprecated() -> None:
     """`datetime_from_proto` warns and still converts as it always did."""
     with pytest.deprecated_call(
-        match=r"`datetime_from_proto` is deprecated; use `datetime_from_proto2` "
-        r"\(returns `datetime \| InvalidDatetime`\) instead\."
+        match=r"^frequenz\.client\.common\.proto\.datetime_from_proto is "
+        r"deprecated since v0\.4\.1\. Use "
+        r"\[frequenz\.client\.common\.proto\.datetime_from_proto2\]\[\] instead\.$"
     ):
         converted = datetime_from_proto(Timestamp(seconds=1, nanos=500000000))
     assert converted == datetime(1970, 1, 1, 0, 0, 1, 500000, tzinfo=timezone.utc)

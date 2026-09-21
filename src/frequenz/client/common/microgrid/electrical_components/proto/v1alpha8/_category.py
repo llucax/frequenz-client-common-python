@@ -15,8 +15,10 @@ from ... import ElectricalComponentCategory
 
 
 @typing_extensions.deprecated(
-    "electrical_component_category_from_proto() is deprecated; use "
-    "electrical_component_class_from_proto() instead."
+    "frequenz.client.common.microgrid.electrical_components.proto.v1alpha8."
+    "electrical_component_category_from_proto is deprecated since v0.4.1. Use "
+    "[frequenz.client.common.microgrid.electrical_components.proto.v1alpha8."
+    "electrical_component_class_from_proto][] instead."
 )
 def electrical_component_category_from_proto(
     message: electrical_components_pb2.ElectricalComponentCategory.ValueType,
@@ -37,8 +39,10 @@ def electrical_component_category_from_proto(
 
 
 @typing_extensions.deprecated(
-    "electrical_component_category_to_proto() is deprecated; use "
-    "electrical_component_class_to_proto() instead."
+    "frequenz.client.common.microgrid.electrical_components.proto.v1alpha8."
+    "electrical_component_category_to_proto is deprecated since v0.4.1. Use "
+    "[frequenz.client.common.microgrid.electrical_components.proto.v1alpha8."
+    "electrical_component_class_to_proto][] instead."
 )
 def electrical_component_category_to_proto(
     category: ElectricalComponentCategory,

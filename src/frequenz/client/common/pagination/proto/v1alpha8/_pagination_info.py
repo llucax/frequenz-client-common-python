@@ -13,8 +13,8 @@ from ....pagination import InvalidPaginationInfo, PaginationInfo
 
 @deprecated(
     "frequenz.client.common.pagination.proto.v1alpha8.pagination_info_from_proto "
-    "is deprecated. Use "
-    "frequenz.client.common.pagination.proto.v1alpha8.pagination_info_from_proto2 "
+    "is deprecated since v0.4.1. Use "
+    "[frequenz.client.common.pagination.proto.v1alpha8.pagination_info_from_proto2][] "
     "instead."
 )
 def pagination_info_from_proto(  # noqa: DOC502
@@ -22,11 +22,10 @@ def pagination_info_from_proto(  # noqa: DOC502
 ) -> PaginationInfo:
     """Convert a protobuf message to a [`PaginationInfo`][....PaginationInfo] object.
 
-    Warning: Deprecated
-        Use [`pagination_info_from_proto2`][..pagination_info_from_proto2]
-        instead. The new converter distinguishes well-formed from malformed
-        data at the type level (`PaginationInfo | InvalidPaginationInfo`)
-        rather than raising a `ValueError` when the invariant fires.
+    [`pagination_info_from_proto2`][..pagination_info_from_proto2] distinguishes
+    well-formed from malformed data at the type level
+    (`PaginationInfo | InvalidPaginationInfo`) rather than raising a
+    `ValueError` when the invariant fires.
 
     Args:
         message: The protobuf message to convert.

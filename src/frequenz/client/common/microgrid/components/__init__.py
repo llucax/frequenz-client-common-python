@@ -10,9 +10,9 @@ from typing_extensions import deprecated
 
 
 @deprecated(
-    "frequenz.client.common.microgrid.components.ComponentId is deprecated. "
-    "Use frequenz.client.common.microgrid.electrical_components."
-    "ElectricalComponentId instead."
+    "frequenz.client.common.microgrid.components.ComponentId is deprecated "
+    "since v0.4.1. Use [frequenz.client.common.microgrid."
+    "electrical_components.ElectricalComponentId][] instead."
 )
 @final
 class ComponentId(BaseId, str_prefix="CID"):

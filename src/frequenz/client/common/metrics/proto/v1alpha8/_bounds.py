@@ -13,17 +13,17 @@ from ..._bounds import Bounds, BoundsSet, InvalidBounds, InvalidBoundsSet
 
 
 @deprecated(
-    "`bounds_from_proto` is deprecated; use "
-    "`bounds_from_proto2` (returns `Bounds | InvalidBounds`) instead."
+    "frequenz.client.common.metrics.proto.v1alpha8.bounds_from_proto is "
+    "deprecated since v0.4.1. Use "
+    "[frequenz.client.common.metrics.proto.v1alpha8.bounds_from_proto2][] "
+    "instead."
 )
 def bounds_from_proto(message: bounds_pb2.Bounds) -> Bounds:  # noqa: DOC502
     """Create a [`Bounds`][....Bounds] object from a protobuf message.
 
-    Warning: Deprecated
-        Use [`bounds_from_proto2`][..bounds_from_proto2] instead. The new
-        converter distinguishes well-formed from malformed data at the
-        type level (`Bounds | InvalidBounds`) rather than raising a
-        `ValueError` when the invariant fires.
+    [`bounds_from_proto2`][..bounds_from_proto2] distinguishes well-formed from
+    malformed data at the type level (`Bounds | InvalidBounds`) rather than
+    raising a `ValueError` when the invariant fires.
 
     Args:
         message: The protobuf message to convert.
@@ -101,9 +101,9 @@ def bounds_set_from_proto(
 
 
 @deprecated(
-    "`bounds_from_proto_with_issues` is deprecated; use "
-    "`bounds_from_proto2` (returns `Bounds | InvalidBounds`) and inspect "
-    "the returned type instead."
+    "frequenz.client.common.metrics.proto.v1alpha8.bounds_from_proto_with_issues "
+    "is deprecated since v0.4.1. Use "
+    "[frequenz.client.common.metrics.proto.v1alpha8.bounds_from_proto2][] instead."
 )
 def bounds_from_proto_with_issues(
     message: bounds_pb2.Bounds,
@@ -113,12 +113,9 @@ def bounds_from_proto_with_issues(
 ) -> Bounds | None:  # noqa: DOC502
     """Create a [`Bounds`][....Bounds] object from a protobuf message, collecting issues.
 
-    Warning: Deprecated
-        Use [`bounds_from_proto2`][..bounds_from_proto2] instead and
-        inspect the returned type. The new converter distinguishes
-        well-formed from malformed data at the type level
-        (`Bounds | InvalidBounds`) rather than routing invalid data
-        through a side-channel string list.
+    [`bounds_from_proto2`][..bounds_from_proto2] distinguishes well-formed from
+    malformed data at the type level (`Bounds | InvalidBounds`) rather than
+    routing invalid data through a side-channel string list.
 
     Args:
         message: The protobuf message to convert.

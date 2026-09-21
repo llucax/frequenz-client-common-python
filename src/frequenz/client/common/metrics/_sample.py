@@ -78,8 +78,9 @@ class MetricConnectionCategory(Enum):
 
     UNSPECIFIED = deprecated_member(
         0,
-        "MetricConnectionCategory.UNSPECIFIED is deprecated; use the `int` value `0` "
-        "instead if you really need to check for this low-level value.",
+        "frequenz.client.common.metrics.MetricConnectionCategory.UNSPECIFIED "
+        "is deprecated since v0.4.1. Use the int value 0 instead if you really "
+        "need to check for this low-level value.",
     )
     """The connection category was not specified (do not use)."""
 
@@ -273,6 +274,10 @@ class MetricSample:
     ) -> None:
         """Initialize this metric sample.
 
+        Deprecated:
+            The `bounds` argument is deprecated since v0.4.1. Use `bounds_set`
+            instead.
+
         Args:
             sample_time: The moment when the metric was sampled, as a
                 well-formed [`datetime`][datetime.datetime]. This spelling
@@ -381,16 +386,23 @@ class MetricSample:
         return sample
 
     @property
-    @deprecated("`MetricSample.sample_time` is deprecated; use `sample_time2` instead.")
+    @deprecated(
+        "frequenz.client.common.metrics.MetricSample.sample_time is deprecated "
+        "since v0.4.1. Use "
+        "[frequenz.client.common.metrics.MetricSample.get_sample_time][] instead."
+    )
     def sample_time(self) -> datetime:  # noqa: DOC502
         """The moment when the metric was sampled.
 
-        Warning: Deprecated
-            Use [`sample_time2`][..sample_time2] instead, or
-            [`get_sample_time()`][..get_sample_time] when a valid
-            [`datetime`][datetime.datetime] is required. This property keeps
-            the released `datetime` type, so it cannot express a malformed wire
-            timestamp and raises for one instead.
+        Deprecated:
+            This property is deprecated since v0.4.1. Use
+            [`get_sample_time()`][..get_sample_time] instead.
+
+        This property keeps the released `datetime` type, so it cannot express
+        a malformed wire timestamp and raises for one instead, exactly like
+        [`get_sample_time()`][..get_sample_time]. Read
+        [`sample_time2`][..sample_time2] to get a malformed timestamp as an
+        [`InvalidDatetime`][....InvalidDatetime] instead.
 
         Returns:
             The sample time, when it is a valid
@@ -404,16 +416,22 @@ class MetricSample:
         return self.get_sample_time()
 
     @property
-    @deprecated("`MetricSample.bounds` is deprecated; use `bounds_set` instead.")
+    @deprecated(
+        "frequenz.client.common.metrics.MetricSample.bounds is deprecated "
+        "since v0.4.1. Use "
+        "[frequenz.client.common.metrics.MetricSample.bounds_set][] instead."
+    )
     def bounds(self) -> list[Bounds]:
         """The valid bounds that apply to the metric sample.
 
-        Warning: Deprecated
-            Use `bounds_set` instead. For backward compatibility this returns
-            only the valid [`Bounds`][...Bounds] from `bounds_set` (dropping any
-            malformed entries, as the old field did), but it returns the
-            normalized, merged bounds rather than the raw list received on the
-            wire.
+        Deprecated:
+            This property is deprecated since v0.4.1. Use
+            [`bounds_set`][..bounds_set] instead.
+
+        For backward compatibility this returns only the valid
+        [`Bounds`][...Bounds] from `bounds_set` (dropping any malformed entries,
+        as the old field did), but it returns the normalized, merged bounds
+        rather than the raw list received on the wire.
 
         Returns:
             The valid bounds in `bounds_set`.

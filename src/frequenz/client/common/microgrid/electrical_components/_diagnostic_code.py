@@ -12,8 +12,10 @@ class ElectricalComponentDiagnosticCode(Enum):
 
     UNSPECIFIED = deprecated_member(
         0,
-        "ElectricalComponentDiagnosticCode.UNSPECIFIED is deprecated; use the `int` value `0` "
-        "instead if you really need to check for this low-level value.",
+        "frequenz.client.common.microgrid.electrical_components."
+        "ElectricalComponentDiagnosticCode.UNSPECIFIED is deprecated since "
+        "v0.4.1. Use the int value 0 instead if you really need to check for "
+        "this low-level value.",
     )
     """Default value. No specific error is specified."""
 
