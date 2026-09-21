@@ -127,8 +127,9 @@ def metric_sample_from_proto(
 
 
 @deprecated(
-    "`metric_connection_from_proto_with_issues` is deprecated; use "
-    "`metric_connection_from_proto` and inspect the returned type instead."
+    "frequenz.client.common.metrics.proto.v1alpha8.metric_connection_from_proto_with_issues is "
+    "deprecated. "
+    "Use frequenz.client.common.metrics.proto.v1alpha8.metric_connection_from_proto instead."
 )
 def metric_connection_from_proto_with_issues(
     message: metrics_pb2.MetricConnection,
@@ -138,13 +139,15 @@ def metric_connection_from_proto_with_issues(
 ) -> MetricConnection:
     """Convert a protobuf message to a metric connection object.
 
-    Warning: Deprecated
-        Use
+    Deprecated:
+        Deprecated since v0.4.1. Use
         [`metric_connection_from_proto`][frequenz.client.common.metrics.proto.v1alpha8.metric_connection_from_proto]
-        instead and inspect the returned type. The new converter encodes an unspecified
-        or unrecognized category in the returned `MetricConnection.category` field
-        (`MetricConnectionCategory | int`) rather than routing it through a side-channel
-        string list.
+        instead.
+
+    [`metric_connection_from_proto`][frequenz.client.common.metrics.proto.v1alpha8.metric_connection_from_proto]
+    encodes an unspecified or unrecognized category in the returned
+    `MetricConnection.category` field (`MetricConnectionCategory | int`) rather than
+    routing it through a side-channel string list.
 
     Args:
         message: The protobuf message to convert.
@@ -173,8 +176,10 @@ def metric_connection_from_proto_with_issues(
 
 
 @deprecated(
-    "`metric_sample_from_proto_with_issues` is deprecated; use "
-    "`metric_sample_from_proto` and inspect the returned type instead."
+    "frequenz.client.common.metrics.proto.v1alpha8.metric_sample_from_proto_with_issues is "
+    "deprecated. "
+    "Use frequenz.client.common.metrics.proto.v1alpha8.metric_sample_from_proto and inspect the "
+    "returned type instead."
 )
 def metric_sample_from_proto_with_issues(
     message: metrics_pb2.MetricSample,
@@ -184,13 +189,15 @@ def metric_sample_from_proto_with_issues(
 ) -> MetricSample:
     """Convert a protobuf message to a metric sample object.
 
-    Warning: Deprecated
-        Use
+    Deprecated:
+        Deprecated since v0.4.1. Use
         [`metric_sample_from_proto`][frequenz.client.common.metrics.proto.v1alpha8.metric_sample_from_proto]
-        instead and inspect the returned type. The new converter encodes an unspecified
-        or unrecognized `metric` (`Metric | int`), malformed bounds (`InvalidBoundsSet`)
-        and an unrepresentable sample time (`InvalidDatetime`) in the returned
-        `MetricSample` rather than routing them through a side-channel string list.
+        and inspect the returned type instead.
+
+    [`metric_sample_from_proto`][frequenz.client.common.metrics.proto.v1alpha8.metric_sample_from_proto]
+    encodes an unspecified or unrecognized `metric` (`Metric | int`), malformed bounds
+    (`InvalidBoundsSet`) and an unrepresentable sample time (`InvalidDatetime`) in the
+    returned `MetricSample` rather than routing them through a side-channel string list.
 
     Note:
         A malformed `sample_time` still raises `ValueError`, as it did when the

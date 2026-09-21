@@ -12,10 +12,16 @@ class ElectricalComponentStateCode(Enum):
 
     UNSPECIFIED = deprecated_member(
         0,
-        "ElectricalComponentStateCode.UNSPECIFIED is deprecated; use the `int` value `0` "
-        "instead if you really need to check for this low-level value.",
+        "frequenz.client.common.microgrid.electrical_components.ElectricalComponentStateCode."
+        "UNSPECIFIED is deprecated. "
+        "Use the int value 0 instead if you really need to check for this low-level value.",
     )
-    """Default value when the component state is not explicitly set."""
+    """Default value when the component state is not explicitly set.
+
+    Deprecated:
+        Deprecated since v0.4.1. Use the int value 0 instead if you really need to check
+        for this low-level value.
+    """
 
     UNKNOWN = 1
     """The component is in an unknown or undefined condition.

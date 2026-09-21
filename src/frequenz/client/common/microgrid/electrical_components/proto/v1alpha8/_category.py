@@ -15,13 +15,20 @@ from ... import ElectricalComponentCategory
 
 
 @typing_extensions.deprecated(
-    "electrical_component_category_from_proto() is deprecated; use "
-    "electrical_component_class_from_proto() instead."
+    "frequenz.client.common.microgrid.electrical_components.proto.v1alpha8."
+    "electrical_component_category_from_proto is deprecated. "
+    "Use frequenz.client.common.microgrid.electrical_components.proto.v1alpha8."
+    "electrical_component_class_from_proto instead."
 )
 def electrical_component_category_from_proto(
     message: electrical_components_pb2.ElectricalComponentCategory.ValueType,
 ) -> ElectricalComponentCategory | int:
     """Convert a protobuf `ElectricalComponentCategory` value to an enum member.
+
+    Deprecated:
+        Deprecated since v0.4.1. Use
+        [`electrical_component_class_from_proto`][frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.electrical_component_class_from_proto]
+        instead.
 
     Args:
         message: The protobuf message to convert.
@@ -37,13 +44,20 @@ def electrical_component_category_from_proto(
 
 
 @typing_extensions.deprecated(
-    "electrical_component_category_to_proto() is deprecated; use "
-    "electrical_component_class_to_proto() instead."
+    "frequenz.client.common.microgrid.electrical_components.proto.v1alpha8."
+    "electrical_component_category_to_proto is deprecated. "
+    "Use frequenz.client.common.microgrid.electrical_components.proto.v1alpha8."
+    "electrical_component_class_to_proto instead."
 )
 def electrical_component_category_to_proto(
     category: ElectricalComponentCategory,
 ) -> electrical_components_pb2.ElectricalComponentCategory.ValueType:
     """Convert an `ElectricalComponentCategory` enum member to a protobuf value.
+
+    Deprecated:
+        Deprecated since v0.4.1. Use
+        [`electrical_component_class_to_proto`][frequenz.client.common.microgrid.electrical_components.proto.v1alpha8.electrical_component_class_to_proto]
+        instead.
 
     Args:
         category: The

@@ -48,21 +48,23 @@ def energy_market_code_type_to_proto(
 
 
 @deprecated(
-    "`delivery_area_from_proto` is deprecated; use "
-    "`delivery_area_from_proto2` (returns "
-    "`DeliveryArea | InvalidDeliveryArea`) instead."
+    "frequenz.client.common.grid.proto.v1alpha8.delivery_area_from_proto is deprecated. "
+    "Use frequenz.client.common.grid.proto.v1alpha8.delivery_area_from_proto2 instead."
 )
 def delivery_area_from_proto(  # noqa: DOC502
     message: delivery_area_pb2.DeliveryArea,
 ) -> DeliveryArea:
     """Convert a protobuf message to a delivery area object.
 
-    Warning: Deprecated
-        Use
+    Deprecated:
+        Deprecated since v0.4.1. Use
         [`delivery_area_from_proto2`][frequenz.client.common.grid.proto.v1alpha8.delivery_area_from_proto2]
-        instead. The new converter distinguishes well-formed from malformed data at the
-        type level (`DeliveryArea | InvalidDeliveryArea`) rather than silently
-        constructing a `DeliveryArea` with invalid content.
+        instead.
+
+    [`delivery_area_from_proto2`][frequenz.client.common.grid.proto.v1alpha8.delivery_area_from_proto2]
+    distinguishes well-formed from malformed data at the type level
+    (`DeliveryArea | InvalidDeliveryArea`) rather than silently constructing a `DeliveryArea` with
+    invalid content.
 
     Args:
         message: The protobuf message to convert.

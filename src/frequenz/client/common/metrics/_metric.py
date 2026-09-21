@@ -41,10 +41,15 @@ class Metric(Enum):
 
     UNSPECIFIED = deprecated_member(
         0,
-        "Metric.UNSPECIFIED is deprecated; use the `int` value `0` "
-        "instead if you really need to check for this low-level value.",
+        "frequenz.client.common.metrics.Metric.UNSPECIFIED is deprecated. "
+        "Use the int value 0 instead if you really need to check for this low-level value.",
     )
-    """The metric is unspecified (this should not be used)."""
+    """The metric is unspecified (this should not be used).
+
+    Deprecated:
+        Deprecated since v0.4.1. Use the int value 0 instead if you really need to check
+        for this low-level value.
+    """
 
     DC_VOLTAGE = 1
     """The DC voltage."""

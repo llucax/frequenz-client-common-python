@@ -11,12 +11,17 @@ from typing_extensions import deprecated
 
 @deprecated(
     "frequenz.client.common.microgrid.components.ComponentId is deprecated. "
-    "Use frequenz.client.common.microgrid.electrical_components."
-    "ElectricalComponentId instead."
+    "Use frequenz.client.common.microgrid.electrical_components.ElectricalComponentId instead."
 )
 @final
 class ComponentId(BaseId, str_prefix="CID"):
-    """A unique identifier for a microgrid component."""
+    """A unique identifier for a microgrid component.
+
+    Deprecated:
+        Deprecated since v0.4.1. Use
+        [`frequenz.client.common.microgrid.electrical_components.ElectricalComponentId`][]
+        instead.
+    """
 
 
 __all__ = ["ComponentId"]

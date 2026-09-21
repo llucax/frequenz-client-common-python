@@ -46,10 +46,15 @@ class EnergyMarketCodeType(Enum):
 
     UNSPECIFIED = deprecated_member(
         0,
-        "EnergyMarketCodeType.UNSPECIFIED is deprecated; use the `int` value `0` "
-        "instead if you really need to check for this low-level value.",
+        "frequenz.client.common.grid.EnergyMarketCodeType.UNSPECIFIED is deprecated. "
+        "Use the int value 0 instead if you really need to check for this low-level value.",
     )
-    """Unspecified type. This value is a placeholder and should not be used."""
+    """Unspecified type. This value is a placeholder and should not be used.
+
+    Deprecated:
+        Deprecated since v0.4.1. Use the int value 0 instead if you really need to check
+        for this low-level value.
+    """
 
     EUROPE_EIC = 1
     """European Energy Identification Code Standard."""
@@ -72,11 +77,11 @@ class BaseDeliveryArea:
     code: str | None
     """The code representing the unique identifier for the delivery area.
 
-    Warning: Using `None` is deprecated
-        This field is required for a well-formed `DeliveryArea`, so we are
-        making this more explicit by deprecating the use of `None` here. In the
-        future, `| None` will be removed so passing `None` will fail type
-        checking.
+    Deprecated:
+        Passing `None` is deprecated since v0.4.1. This field is required for a
+        well-formed `DeliveryArea`, so we are making this more explicit by
+        deprecating the use of `None` here. In the future, `| None` will be
+        removed so passing `None` will fail type checking.
     """
 
     code_type: EnergyMarketCodeType | int
@@ -122,12 +127,12 @@ class DeliveryArea(BaseDeliveryArea):
     location. Delivery areas can have different codes based on the jurisdiction in
     which they operate.
 
-    Warning: Construction of invalid instances is deprecated
-        A well-formed `DeliveryArea` carries a non-empty
+    Deprecated:
+        Constructing a `DeliveryArea` with invalid data is deprecated since v0.4.1, and
+        will raise a [`ValueError`][] in a future release. The type itself is not
+        deprecated. A well-formed `DeliveryArea` carries a non-empty
         [`code`][frequenz.client.common.grid.DeliveryArea.code] and a specified
-        [`code_type`][frequenz.client.common.grid.DeliveryArea.code_type]. Constructing
-        one with data that violates this invariant is **deprecated**, and will raise a
-        [`ValueError`][] in a future release.
+        [`code_type`][frequenz.client.common.grid.DeliveryArea.code_type].
 
         You can temporarily use the `_raise_on_invalid` keyword argument to get
         the upcoming behavior now (raising instead of deprecation warning).
