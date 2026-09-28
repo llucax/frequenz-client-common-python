@@ -3,10 +3,10 @@
 
 """Tests for the DeliveryArea class."""
 
-import warnings
 from dataclasses import dataclass
 
 import pytest
+from frequenz.core.warnings import asserting_no_deprecations
 
 from frequenz.client.common import (
     UnrecognizedEnumValueError,
@@ -62,8 +62,7 @@ class _TestCase:
 )
 def test_creation_valid(case: _TestCase) -> None:
     """Well-formed DeliveryArea construction succeeds without warnings."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         area = DeliveryArea(code=case.code, code_type=case.code_type)
     assert area.code == case.code
     assert area.code_type == case.code_type
@@ -161,8 +160,7 @@ def test_creation_with_unspecified_code_type_member_emits_deprecation_warning() 
 )
 def test_creation_raises_on_invalid_code(case: _TestCase) -> None:
     """`_raise_on_invalid=True` raises `ValueError` on empty/`None` code."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         with pytest.raises(ValueError, match="`code` cannot be None or empty"):
             DeliveryArea(
                 code=case.code,
@@ -173,8 +171,7 @@ def test_creation_raises_on_invalid_code(case: _TestCase) -> None:
 
 def test_creation_raises_on_unspecified_int_code_type() -> None:
     """`_raise_on_invalid=True` raises `ValueError` on `code_type=0`."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         with pytest.raises(
             ValueError, match="`code_type` cannot be 0 \\(UNSPECIFIED\\)"
         ):
@@ -185,8 +182,7 @@ def test_creation_raises_on_unspecified_member_code_type() -> None:
     """`_raise_on_invalid=True` raises `ValueError` on the UNSPECIFIED member."""
     with pytest.deprecated_call():
         unspecified = EnergyMarketCodeType.UNSPECIFIED
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         with pytest.raises(
             ValueError, match="`code_type` cannot be 0 \\(UNSPECIFIED\\)"
         ):
@@ -195,8 +191,7 @@ def test_creation_raises_on_unspecified_member_code_type() -> None:
 
 def test_creation_does_not_raise_when_valid() -> None:
     """`_raise_on_invalid=True` does not raise on well-formed data."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         area = DeliveryArea(
             code="DE",
             code_type=EnergyMarketCodeType.EUROPE_EIC,
@@ -263,8 +258,7 @@ def test_get_code_type_raises_unspecified_for_value_zero_member() -> None:
         unspecified = EnergyMarketCodeType.UNSPECIFIED
     with pytest.deprecated_call():
         area = DeliveryArea(code="TEST", code_type=unspecified)
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         with pytest.raises(UnspecifiedEnumValueError):
             area.get_code_type()
 

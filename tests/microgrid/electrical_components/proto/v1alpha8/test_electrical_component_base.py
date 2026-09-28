@@ -4,7 +4,6 @@
 """Tests for protobuf conversion of the base/common part of electrical components."""
 
 import math
-import warnings
 from datetime import timezone
 
 import pytest
@@ -12,6 +11,7 @@ from frequenz.api.common.v1alpha8.metrics import bounds_pb2, metrics_pb2
 from frequenz.api.common.v1alpha8.microgrid.electrical_components import (
     electrical_components_pb2,
 )
+from frequenz.core.warnings import ignoring_deprecations
 from google.protobuf.timestamp_pb2 import Timestamp
 
 from frequenz.client.common.metrics import (
@@ -85,8 +85,7 @@ def test_operational_mode_to_bools(
 
 def test_complete(default_component_base_data: _ElectricalComponentBaseData) -> None:
     """Test parsing of a complete base component proto."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.CHP  # Just to pick a valid category
     base_data = default_component_base_data._replace(category=category)
     proto = base_data_as_proto(base_data)
@@ -99,8 +98,7 @@ def test_missing_category_specific_info(
     default_component_base_data: _ElectricalComponentBaseData,
 ) -> None:
     """Test parsing with missing optional category specific info."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.UNSPECIFIED
     base_data = default_component_base_data._replace(
         name="",
@@ -122,8 +120,7 @@ def test_empty_lifetime_is_unbounded(
     default_component_base_data: _ElectricalComponentBaseData,
 ) -> None:
     """A present but empty protobuf lifetime becomes an unbounded `Lifetime`."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.CHP
     base_data = default_component_base_data._replace(
         category=category,
@@ -141,8 +138,7 @@ def test_category_specific_info_mismatch(
     default_component_base_data: _ElectricalComponentBaseData,
 ) -> None:
     """Test category and category specific info mismatch."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.GRID_CONNECTION_POINT
     base_data = default_component_base_data._replace(
         category=category,
@@ -165,8 +161,7 @@ def test_invalid_lifetime(
     default_component_base_data: _ElectricalComponentBaseData,
 ) -> None:
     """Test invalid lifetime (start after end)."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.CHP
     base_data = default_component_base_data._replace(
         category=category,
@@ -204,8 +199,7 @@ def _metric_bound(
 
 def test_metric_config_bounds_stores_unspecified_as_int() -> None:
     """Test UNSPECIFIED metric bounds load as plain int key 0."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         unspecified = Metric.UNSPECIFIED
     message = [
         _metric_bound(int(unspecified.value), 0.0, 1.0),

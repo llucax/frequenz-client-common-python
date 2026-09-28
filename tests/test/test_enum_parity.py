@@ -27,6 +27,7 @@ import pytest
 import typing_extensions
 from frequenz.core.enum import Enum as DeprecatingEnum
 from frequenz.core.enum import deprecated_member, unique
+from frequenz.core.warnings import ignoring_deprecations
 from pytest_mock import MockerFixture
 
 from frequenz.client.common.proto import enum_from_proto
@@ -222,8 +223,7 @@ def _gone_from_proto(value: int) -> _GoneColor | int:
     Returns:
         The `_GoneColor` member, or the raw `int` for unknown values.
     """
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         return enum_from_proto(value, _GoneColor)
 
 
@@ -237,8 +237,7 @@ def _gone_to_proto(member: _GoneColor) -> int:
     Returns:
         The member's numeric value.
     """
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         return int(member.value)
 
 

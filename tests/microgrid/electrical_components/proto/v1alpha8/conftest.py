@@ -3,7 +3,6 @@
 
 """Fixtures and utilities for testing electrical component protobuf conversion."""
 
-import warnings
 from datetime import datetime, timezone
 
 import pytest
@@ -12,6 +11,7 @@ from frequenz.api.common.v1alpha8.microgrid import lifetime_pb2
 from frequenz.api.common.v1alpha8.microgrid.electrical_components import (
     electrical_components_pb2,
 )
+from frequenz.core.warnings import ignoring_deprecations
 from google.protobuf.timestamp_pb2 import Timestamp
 
 from frequenz.client.common.metrics import Bounds, BoundsSet, Metric
@@ -53,8 +53,7 @@ def default_component_base_data(
     component_id: ElectricalComponentId, microgrid_id: MicrogridId
 ) -> _ElectricalComponentBaseData:
     """Provide a fixture for common component fields."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.UNSPECIFIED
     return _ElectricalComponentBaseData(
         component_id=component_id,

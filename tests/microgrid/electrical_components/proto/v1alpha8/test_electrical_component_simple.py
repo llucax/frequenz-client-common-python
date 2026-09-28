@@ -3,12 +3,11 @@
 
 """Tests for protobuf conversion of simple electrical components."""
 
-import warnings
-
 import pytest
 from frequenz.api.common.v1alpha8.microgrid.electrical_components import (
     electrical_components_pb2,
 )
+from frequenz.core.warnings import ignoring_deprecations
 
 from frequenz.client.common.microgrid.electrical_components import (
     Breaker,
@@ -100,8 +99,7 @@ def test_category_mismatch(
     assert electrical_component_class_to_proto(component) == (1, None)
 
 
-with warnings.catch_warnings():
-    warnings.simplefilter("ignore", DeprecationWarning)
+with ignoring_deprecations():
     _TRIVIAL_CASES = [
         pytest.param(ElectricalComponentCategory.BREAKER, Breaker, id="Breaker"),
         pytest.param(
@@ -167,8 +165,7 @@ def test_power_transformer(
     secondary: float | None,
 ) -> None:
     """Test PowerTransformer component."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.POWER_TRANSFORMER
     base_data = default_component_base_data._replace(category=category)
 
@@ -196,8 +193,7 @@ def test_grid(
     rated_fuse_current: int | None,
 ) -> None:
     """Test GridConnectionPoint component with default values."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.GRID_CONNECTION_POINT
     base_data = default_component_base_data._replace(category=category)
 
