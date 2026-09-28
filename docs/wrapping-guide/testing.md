@@ -43,6 +43,10 @@ Assert each expected deprecation with
 [`pytest.deprecated_call()`][pytest.deprecated_call]. This records the public
 warning and stops an unrelated warning from being hidden. When deprecated code
 correctly calls another deprecated symbol, suppress only that inner
-`DeprecationWarning` in a small warning block to avoid duplicate messages. In a
-test, use the same small suppression only for a warning that a dedicated
-assertion already checks. Never suppress warnings globally.
+`DeprecationWarning` in a small `frequenz.core.warnings.ignoring_deprecations()`
+block to avoid duplicate messages. In a test, use the same small suppression
+only for a warning that a dedicated assertion already checks, and check that a
+replacement doesn't warn with `frequenz.core.warnings.asserting_no_deprecations()`.
+Never suppress warnings globally, and never with
+[`warnings.catch_warnings()`][warnings.catch_warnings]; [Deprecation and
+compatibility](deprecation-and-compatibility.md) explains both helpers and why.

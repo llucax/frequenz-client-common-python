@@ -123,6 +123,89 @@ class Mode(Enum):
     """Old name of `NEW_NAME`."""
 ```
 
+## Keep a moved symbol importable
+
+When a public symbol moves to another module, keep its old import path working
+with `frequenz.core.warnings.deprecated_aliases()` instead of writing a module
+`__getattr__` by hand. The alias is the very same object, so
+[`isinstance()`][isinstance] keeps working through both paths, and the
+documentation build generates the admonition and label for every alias, as
+long as it is a literal in the call.
+
+```python
+from typing import TYPE_CHECKING, TypeAlias
+
+from frequenz.core.warnings import DeprecatedAlias, deprecated_aliases
+
+if TYPE_CHECKING:
+    from example.new import Thing as _Thing
+
+    Thing: TypeAlias = _Thing
+    """A thing, now living in `example.new`."""
+else:
+    __getattr__ = deprecated_aliases(
+        __name__,
+        DeprecatedAlias("Thing", new_module="example.new", since="v0.5.0"),
+    )
+```
+
+Keep that structure exactly: without the `else:`, type checkers see the
+`__getattr__` and treat every name in the module as `Any`. When the symbol was
+renamed too, give its new name as `new_name`; without `new_module`, the alias
+points at a renamed symbol in its own module. Each alias gives
+its own `since`, the version it is deprecated in, so aliases deprecated in
+different releases can each say theirs; the warning and the generated
+admonition both read `{old} is deprecated since {since}. Use {new} instead.`
+When that standard wording is not enough, give `message` instead of `since`,
+a full template taking only `{old}` and `{new}`, the two fully qualified
+names; the documentation turns `{new}` into a link there too, so leave out
+the cross-reference brackets.
+
+An alias only fits when the old name can be the same object as the new one.
+When the old type has to stay distinct, as
+[`ComponentId`][frequenz.client.common.microgrid.components.ComponentId] does
+next to
+[`ElectricalComponentId`][frequenz.client.common.microgrid.electrical_components.ElectricalComponentId],
+keep a deprecated class instead.
+
+## Silence only the deprecations you raise yourself
+
+Sometimes library code has to touch a symbol it deprecated itself, such as a
+deprecated converter that still has to build the deprecated type it returns.
+The caller already gets the converter's own warning, so a second one from
+inside it is noise. Silence it with
+`frequenz.core.warnings.ignoring_deprecations()`, around the statement that
+raises it and nothing more, so deprecations from anywhere else still get
+through:
+
+```python
+from frequenz.core.warnings import ignoring_deprecations
+from typing_extensions import deprecated
+
+from example import OldThing, ThingProto
+
+
+@deprecated(
+    "example.old_thing_from_proto is deprecated since v0.5.0. "
+    "Use example.thing_from_proto instead."
+)
+def old_thing_from_proto(message: ThingProto) -> OldThing:
+    """Convert a protobuf message to the deprecated `OldThing`."""
+    with ignoring_deprecations():
+        return OldThing(value=message.value)
+```
+
+The same applies to code that is not deprecated itself but still has to accept
+or build a deprecated symbol for compatibility: the user is warned where they
+use the deprecated symbol, not by the library's internals.
+
+Do not use [`warnings.catch_warnings()`][warnings.catch_warnings] for this.
+Entering and leaving it resets the warnings deduplication history of the whole
+program ([python/cpython#73858](https://github.com/python/cpython/issues/73858)),
+so every warning that was already shown, by this library or any other code, is
+shown again after each call. In an application converting data in a loop, that
+turns a handful of warnings into tens of thousands.
+
 ## Tighten invariants in stages
 
 When you tighten a rule, do not always reject old input immediately. First,
@@ -140,11 +223,26 @@ can test the stricter behavior before it becomes required and migrate on purpose
 
 Test every public deprecation with
 [`pytest.deprecated_call()`][pytest.deprecated_call]. Check the exact message
-and the replacement behavior. If deprecated code correctly calls another
-deprecated symbol, suppress only that expected inner
-[`DeprecationWarning`][]
-in a small [`warnings.catch_warnings()`][warnings.catch_warnings] block. The
-outer API must still emit its one public warning.
+and the replacement behavior. The outer API must still emit its one public
+warning, even when it silences inner ones as described above.
+
+Check that the replacement doesn't go through anything deprecated with
+`frequenz.core.warnings.asserting_no_deprecations()`, rather than with an
+`"error"` filter. The filter turns the warning into an exception inside the
+code under test, where a broad `except` can swallow it; the helper records the
+warnings instead and fails when the block ends, listing each one and where it
+came from:
+
+```python
+from frequenz.core.warnings import asserting_no_deprecations
+
+from example import thing_from_proto2
+
+
+def test_thing_from_proto2_does_not_warn() -> None:
+    with asserting_no_deprecations():
+        assert thing_from_proto2(3) == "3"
+```
 
 Add `RELEASE_NOTES.md` migration bullets that state the old behavior, the
 replacement, what changes, and the planned removal version. Remove the
