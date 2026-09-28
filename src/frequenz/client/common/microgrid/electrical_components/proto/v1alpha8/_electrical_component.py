@@ -3,7 +3,6 @@
 
 """Conversion of electrical components to/from protobuf v1alpha8."""
 
-import warnings
 from collections.abc import Mapping, Sequence
 from typing import Final, NamedTuple, TypeAlias, assert_never, overload
 
@@ -11,6 +10,7 @@ from frequenz.api.common.v1alpha8.metrics import bounds_pb2
 from frequenz.api.common.v1alpha8.microgrid.electrical_components import (
     electrical_components_pb2,
 )
+from frequenz.core.warnings import ignoring_deprecations
 from google.protobuf.json_format import MessageToDict
 
 from .....metrics import BoundsSet, InvalidBoundsSet, Metric
@@ -938,8 +938,7 @@ def _electrical_component_base_from_proto(
     Returns:
         An `_ElectricalComponentBaseData` named tuple containing the extracted data.
     """
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore", category=DeprecationWarning)
+    with ignoring_deprecations():
         component_id = ElectricalComponentId(message.id)
         microgrid_id = MicrogridId(message.microgrid_id)
 
@@ -1012,8 +1011,7 @@ def electrical_component_from_proto(
     Returns:
         The resulting electrical component instance.
     """
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore", category=DeprecationWarning)
+    with ignoring_deprecations():
         base_data = _electrical_component_base_from_proto(message)
 
         if base_data.category_mismatched:
@@ -1242,8 +1240,7 @@ def _metric_config_bounds_from_proto(
     """
     grouped: dict[Metric | int, list[bounds_pb2.Bounds]] = {}
     for metric_bound in message:
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             metric = enum_from_proto(metric_bound.metric, Metric)
             if metric is Metric.UNSPECIFIED:
                 metric = metric.value

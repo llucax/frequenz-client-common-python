@@ -3,9 +3,8 @@
 
 """Loading of MetricSample and AggregatedMetricValue objects from protobuf messages."""
 
-import warnings
-
 from frequenz.api.common.v1alpha8.metrics import metrics_pb2
+from frequenz.core.warnings import ignoring_deprecations
 from typing_extensions import deprecated
 
 from ...._datetime import InvalidDatetime
@@ -228,8 +227,7 @@ def metric_sample_from_proto_with_issues(
 
     connection = None
     if message.HasField("connection"):
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             connection = metric_connection_from_proto_with_issues(
                 message.connection, major_issues=major_issues, minor_issues=minor_issues
             )

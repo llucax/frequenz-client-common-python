@@ -22,12 +22,12 @@ the same scaffold.
 from __future__ import annotations
 
 import contextlib
-import warnings
 from collections.abc import Callable, Iterator
 from enum import Enum
 from typing import Any, ClassVar
 
 import pytest
+from frequenz.core.warnings import ignoring_deprecations
 
 
 class EnumParityTest:
@@ -162,8 +162,7 @@ class EnumParityTest:
                 when ``name`` is in `deprecated_members`.
         """
         if name in self.deprecated_members:
-            with warnings.catch_warnings():
-                warnings.simplefilter("ignore", DeprecationWarning)
+            with ignoring_deprecations():
                 yield
         else:
             yield
@@ -182,8 +181,7 @@ class EnumParityTest:
                 when `silence_deprecations` is `True`.
         """
         if self.silence_deprecations:
-            with warnings.catch_warnings():
-                warnings.simplefilter("ignore", DeprecationWarning)
+            with ignoring_deprecations():
                 yield
         else:
             yield

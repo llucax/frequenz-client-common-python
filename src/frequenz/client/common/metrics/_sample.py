@@ -11,6 +11,7 @@ from typing import assert_never
 
 from frequenz.core.enum import Enum, deprecated_member, unique
 from frequenz.core.typing import FloatInt
+from frequenz.core.warnings import ignoring_deprecations
 from typing_extensions import deprecated
 
 from .._datetime import InvalidDatetime, InvalidDatetimeError
@@ -130,8 +131,7 @@ class MetricConnection:
 
     def __str__(self) -> str:
         """Return a string representation of this connection."""
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             match self.category:
                 case 0 | MetricConnectionCategory.UNSPECIFIED:
                     category_name = "cat=<invalid:0>"
@@ -161,8 +161,7 @@ class MetricConnection:
                 client does not recognize. The raw value is available on the
                 error's `value` attribute.
         """
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             match self.category:
                 case 0 | MetricConnectionCategory.UNSPECIFIED:
                     raise UnspecifiedEnumValueError(self, "category")
@@ -369,8 +368,7 @@ class MetricSample:
 
     def __str__(self) -> str:
         """Return a compact string representation of this sample."""
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             match self.metric:
                 case 0 | Metric.UNSPECIFIED:
                     metric = "<invalid:0>"
@@ -517,8 +515,7 @@ class MetricSample:
                 does not recognize. The raw value is available on the error's
                 `value` attribute.
         """
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             match self.metric:
                 case 0 | Metric.UNSPECIFIED:
                     raise UnspecifiedEnumValueError(self, "metric")

@@ -8,6 +8,7 @@ from dataclasses import InitVar, dataclass
 from typing import Any, Self, assert_never
 
 from frequenz.core.enum import Enum, deprecated_member, unique
+from frequenz.core.warnings import ignoring_deprecations
 
 from .._exception import (
     InvalidAttributeError,
@@ -162,8 +163,7 @@ class DeliveryArea(BaseDeliveryArea):
                 DeprecationWarning,
                 stacklevel=3,
             )
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             unspecified_code_type = EnergyMarketCodeType.UNSPECIFIED
         if self.code_type in (0, unspecified_code_type):
             if _raise_on_invalid:
@@ -201,8 +201,7 @@ class DeliveryArea(BaseDeliveryArea):
                 available on the exception's `value` attribute.
         """
         # Suppressing the deprecation warning can be removed when UNSPECIFIED is removed
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             match self.code_type:
                 case 0 | EnergyMarketCodeType.UNSPECIFIED:
                     raise UnspecifiedEnumValueError(self, "code_type")
@@ -229,8 +228,7 @@ class InvalidDeliveryArea(BaseDeliveryArea):
         """Return a human-readable string representation of this instance."""
         # Suppressing the deprecation warning can be removed when UNSPECIFIED
         # is removed
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=DeprecationWarning)
+        with ignoring_deprecations():
             match self.code_type:
                 case 0 | EnergyMarketCodeType.UNSPECIFIED:
                     code_type = "type=<invalid:0>"
