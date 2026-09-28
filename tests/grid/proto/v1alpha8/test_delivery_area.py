@@ -8,6 +8,7 @@ from dataclasses import dataclass
 
 import pytest
 from frequenz.api.common.v1alpha8.grid import delivery_area_pb2
+from frequenz.core.warnings import asserting_no_deprecations
 
 from frequenz.client.common import UnspecifiedEnumValueError
 from frequenz.client.common.grid import (
@@ -264,8 +265,7 @@ def test_from_proto2(
         code=case.code, code_type=case.code_type  # type: ignore[arg-type]
     )
     with caplog.at_level("WARNING"):
-        with warnings.catch_warnings():
-            warnings.simplefilter("error", DeprecationWarning)
+        with asserting_no_deprecations():
             area = delivery_area_from_proto2(proto)
 
     assert isinstance(area, case.expected_type)

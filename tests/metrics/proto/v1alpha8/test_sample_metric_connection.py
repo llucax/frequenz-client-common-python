@@ -3,10 +3,9 @@
 
 """Tests for MetricConnection protobuf conversion."""
 
-import warnings
-
 import pytest
 from frequenz.api.common.v1alpha8.metrics import metrics_pb2
+from frequenz.core.warnings import asserting_no_deprecations
 
 from frequenz.client.common.metrics import MetricConnectionCategory
 from frequenz.client.common.metrics.proto.v1alpha8 import (
@@ -111,8 +110,7 @@ def test_from_proto_unspecified_category() -> None:
         name="some_connection",
     )
 
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         connection = metric_connection_from_proto(proto)
 
     assert connection.category == 0

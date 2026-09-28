@@ -4,11 +4,11 @@
 """Tests for the raw category/type values carried by problematic components."""
 
 import dataclasses
-import warnings
 
 from frequenz.api.common.v1alpha8.microgrid.electrical_components import (
     electrical_components_pb2,
 )
+from frequenz.core.warnings import asserting_no_deprecations, ignoring_deprecations
 
 from frequenz.client.common.microgrid.electrical_components import (
     CategorySpecificInfo,
@@ -32,8 +32,7 @@ def _li_ion_battery(
     default_component_base_data: _ElectricalComponentBaseData,
 ) -> LiIonBattery:
     """Build a `LiIonBattery` through the protobuf converter."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.BATTERY
     base_data = default_component_base_data._replace(category=category)
     proto = base_data_as_proto(base_data)
@@ -203,15 +202,13 @@ def test_from_proto_emits_no_deprecation_warning(
     default_component_base_data: _ElectricalComponentBaseData,
 ) -> None:
     """Converting a protobuf message must not emit a `DeprecationWarning`."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore", DeprecationWarning)
+    with ignoring_deprecations():
         category = ElectricalComponentCategory.BATTERY
     base_data = default_component_base_data._replace(category=category)
     proto = base_data_as_proto(base_data)
     proto.category_specific_info.battery.type = (
         electrical_components_pb2.BATTERY_TYPE_LI_ION
     )
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         component = electrical_component_from_proto(proto)
     assert isinstance(component, LiIonBattery)

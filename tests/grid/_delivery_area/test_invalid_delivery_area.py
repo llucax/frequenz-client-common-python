@@ -3,10 +3,10 @@
 
 """Tests for the InvalidDeliveryArea class."""
 
-import warnings
 from dataclasses import dataclass
 
 import pytest
+from frequenz.core.warnings import asserting_no_deprecations
 
 from frequenz.client.common.grid import (
     BaseDeliveryArea,
@@ -70,8 +70,7 @@ def test_is_base_delivery_area_subclass() -> None:
 )
 def test_creation(case: _TestCase) -> None:
     """`InvalidDeliveryArea` accepts any data with no invariants and no warnings."""
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         area = InvalidDeliveryArea(code=case.code, code_type=case.code_type)
     assert area.code == case.code
     assert area.code_type == case.code_type

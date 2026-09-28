@@ -4,13 +4,13 @@
 """Tests for MetricSample protobuf conversion."""
 
 import math
-import warnings
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Final
 
 import pytest
 from frequenz.api.common.v1alpha8.metrics import bounds_pb2, metrics_pb2
+from frequenz.core.warnings import asserting_no_deprecations
 from google.protobuf.timestamp_pb2 import Timestamp
 
 from frequenz.client.common import InvalidDatetime, InvalidDatetimeError
@@ -373,8 +373,7 @@ def test_from_proto_unspecified_metric() -> None:
         ),
     )
 
-    with warnings.catch_warnings():
-        warnings.simplefilter("error", DeprecationWarning)
+    with asserting_no_deprecations():
         sample = metric_sample_from_proto(proto)
 
     assert sample.metric == 0
