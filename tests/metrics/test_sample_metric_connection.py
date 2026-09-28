@@ -3,6 +3,8 @@
 
 """Tests for MetricConnection and MetricConnectionCategory classes."""
 
+import warnings
+
 import pytest
 
 from frequenz.client.common import (
@@ -135,6 +137,23 @@ def test_get_category_unspecified_member_raises() -> None:
         connection = MetricConnection(category=MetricConnectionCategory.UNSPECIFIED)
     with pytest.raises(UnspecifiedEnumValueError):
         connection.get_category()
+
+
+def test_str_keeps_warnings_deduplicated() -> None:
+    """Silencing the internal deprecation doesn't make warnings show again.
+
+    A `warnings.catch_warnings()` block resets the deduplication history on
+    every call (python/cpython#73858), so the unrelated warning would show on
+    every iteration instead of once.
+    """
+    connection = MetricConnection(category=0)
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("default")
+        for _ in range(3):
+            warnings.warn("an unrelated warning", UserWarning)
+            assert str(connection) == ":cat=<invalid:0>"
+
+    assert [warning.category for warning in caught] == [UserWarning]
 
 
 def test_get_category_unrecognized_int_raises() -> None:

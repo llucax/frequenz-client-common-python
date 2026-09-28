@@ -3,12 +3,11 @@
 
 """Conversion of electrical component categories to/from protobuf v1alpha8."""
 
-import warnings
-
 import typing_extensions
 from frequenz.api.common.v1alpha8.microgrid.electrical_components import (
     electrical_components_pb2,
 )
+from frequenz.core.warnings import ignoring_deprecations
 
 from .....proto import enum_from_proto
 from ... import ElectricalComponentCategory
@@ -38,8 +37,7 @@ def electrical_component_category_from_proto(
             [`ElectricalComponentCategory`][frequenz.client.common.microgrid.electrical_components.ElectricalComponentCategory]
             enum member, or the raw [`int`][] if the protobuf value is not recognized.
     """
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore", category=DeprecationWarning)
+    with ignoring_deprecations():
         return enum_from_proto(message, ElectricalComponentCategory)
 
 
@@ -67,8 +65,7 @@ def electrical_component_category_to_proto(
     Returns:
         The corresponding protobuf `ElectricalComponentCategory` value.
     """
-    with warnings.catch_warnings():
-        warnings.filterwarnings("ignore", category=DeprecationWarning)
+    with ignoring_deprecations():
         return electrical_components_pb2.ElectricalComponentCategory.ValueType(
             category.value
         )
