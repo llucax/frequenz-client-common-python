@@ -30,7 +30,7 @@ wrappers.
   `*_from_proto` and `*_to_proto` functions that translate protobuf messages
   to wrapper types.
 - [Deprecation and compatibility](deprecation-and-compatibility.md) — Describes
-  how to replace public functions and tighten validation without surprising
-  callers.
+  how to replace or move public symbols and tighten validation without
+  surprising callers, and how to keep the library's own deprecations quiet.
 - [Testing](testing.md) — Shows how to place tests, check enum parity, and make
   documentation examples and warnings part of the test suite.
